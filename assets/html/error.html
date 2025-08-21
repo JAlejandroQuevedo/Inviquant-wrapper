@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sin conexión</title>
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        font-family: system-ui, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        background: linear-gradient(to bottom, #4b116f, #68217a);
+        color: #333;
+      }
+
+      .card {
+        background-color: white;
+        padding: 32px 24px;
+        border-radius: 12px;
+        max-width: 360px;
+        width: 90%;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        text-align: center;
+      }
+
+      .card h1 {
+        color: #4b116f;
+        font-size: 24px;
+        margin-bottom: 16px;
+      }
+
+      .card p {
+        font-size: 16px;
+        color: #555;
+        margin-bottom: 24px;
+      }
+
+      button {
+        padding: 12px 24px;
+        font-size: 16px;
+        color: white;
+        background-color: #68217a;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+      }
+
+      button:active {
+        opacity: 0.9;
+      }
+
+      .logo {
+        margin-top: 32px;
+        font-size: 20px;
+        font-weight: bold;
+        color: white;
+      }
+
+      @media (max-height: 600px) {
+        .logo {
+          margin-top: 16px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="card">
+      <h1>🚫 Sin conexión</h1>
+      <p>Verifica tu red e intenta nuevamente.</p>
+      <button
+        onclick="window.flutter_inappwebview.callHandler('reloadMainSite')"
+      >
+        Reintentar
+      </button>
+    </div>
+  </body>
+</html>

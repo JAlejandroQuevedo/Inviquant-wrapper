@@ -14,7 +14,7 @@ if (keystorePropertiesFile.exists()) {
 }
 
 android {
-    namespace = "com.rgmliquidassetsapp.rgmliquidassetsapp"
+    namespace = "com.rgmliquidassetsappjtech.rgmliquidassetsapp"
     compileSdk = flutter.compileSdkVersion
     ndkVersion = flutter.ndkVersion
 
@@ -28,7 +28,7 @@ android {
     }
 
     defaultConfig {
-        applicationId = "com.rgmliquidassetsapp.rgmliquidassetsapp"
+        applicationId = "com.rgmliquidassetsappjtech.rgmliquidassetsapp"
         minSdk = flutter.minSdkVersion
         targetSdk = flutter.targetSdkVersion
         versionCode = flutter.versionCode

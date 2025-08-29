@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_inappwebview/flutter_inappwebview.dart';
@@ -92,10 +94,14 @@ class _WebHomeState extends State<WebHome> {
                 child: InAppWebView(
                   initialUrlRequest: URLRequest(url: WebUri(kStartUrl)),
                   initialSettings: InAppWebViewSettings(
+                    disableContextMenu: false,
+                    disableInputAccessoryView: false,
                     javaScriptEnabled: true,
                     cacheEnabled: true,
                     domStorageEnabled: true,
-                    userAgent: "AndroidWebWrapper/1.0",
+                    userAgent: Platform.isIOS
+                        ? "iOSWebWrapper/1.0"
+                        : "AndroidWebWrapper/1.0",
                     supportZoom: false,
                     useOnDownloadStart: true,
                     useShouldOverrideUrlLoading: true,
@@ -106,7 +112,9 @@ class _WebHomeState extends State<WebHome> {
                     thirdPartyCookiesEnabled: true,
                     incognito: false,
                   ),
+
                   pullToRefreshController: _pullToRefresh,
+
                   onWebViewCreated: (controller) async {
                     _controller = controller;
 
@@ -139,7 +147,6 @@ class _WebHomeState extends State<WebHome> {
                   onLoadStop: (controller, url) async {
                     _pullToRefresh.endRefreshing();
                     isShowingError = false;
-
                     if (url.toString().startsWith("chrome-error://")) {
                       await loadLocalErrorHtml();
                     }
